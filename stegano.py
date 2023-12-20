@@ -1,8 +1,9 @@
 from PIL import Image
 import numpy
+import os
+
 
 image_path = "C:/Users/hakim/Documents/md5/aladin.jpg"
-
 
 
 def lsb_1(image_path, message):
@@ -23,6 +24,14 @@ def lsb_1(image_path, message):
 				else :
 					break
 				index_binary_message += 1
+
+	watermarked_image_object = Image.fromarray(image_array, "RGB")
+	
+	root_path = os.path.split(image_path)[0]
+	watermarked_image_path = os.path.join(root_path, "watermarked_image.png")
+	watermarked_image_path = f"{root_path}/watermarked_image.png"
+
+	watermarked_image_object.save(watermarked_image_path)
 
 
 lsb_1(image_path, "Coucou les loulous")
