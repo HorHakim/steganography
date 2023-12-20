@@ -50,6 +50,3 @@ def extract_message_from_image(watermarked_image_path):
 					message = ''.join([chr(int(binary_message[i : i+8],2)) for i in range(0, len(binary_message), 8)])
 					return message
 
-
-# lsb_1(image_path, "Coucou les loulous")
-print(extract_message_from_image(watermarked_image_path))

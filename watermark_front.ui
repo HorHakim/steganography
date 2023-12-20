@@ -33,7 +33,8 @@ QPushButton:hover {
 
 QLineEdit{
   border-radius: 10px;
-}</string>
+}
+</string>
   </property>
   <widget class="QWidget" name="main_widget">
    <widget class="QPushButton" name="browse_button">
@@ -96,16 +97,58 @@ p, li { white-space: pre-wrap; }
     </property>
    </widget>
    <widget class="QPushButton" name="watermark_button">
+    <property name="enabled">
+     <bool>false</bool>
+    </property>
     <property name="geometry">
      <rect>
       <x>360</x>
-      <y>380</y>
+      <y>400</y>
       <width>111</width>
       <height>51</height>
      </rect>
     </property>
     <property name="text">
      <string>Watermark</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="extract_message_button">
+    <property name="enabled">
+     <bool>false</bool>
+    </property>
+    <property name="geometry">
+     <rect>
+      <x>660</x>
+      <y>200</y>
+      <width>111</width>
+      <height>51</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Extract message</string>
+    </property>
+   </widget>
+   <widget class="QLineEdit" name="password_line_edit">
+    <property name="geometry">
+     <rect>
+      <x>310</x>
+      <y>370</y>
+      <width>201</width>
+      <height>20</height>
+     </rect>
+    </property>
+   </widget>
+   <widget class="QLabel" name="password">
+    <property name="geometry">
+     <rect>
+      <x>230</x>
+      <y>374</y>
+      <width>47</width>
+      <height>13</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Password</string>
     </property>
    </widget>
   </widget>
