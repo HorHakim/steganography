@@ -2,7 +2,7 @@ from PyQt5.QtWidgets import QMainWindow, QFileDialog
 from PyQt5 import uic
 
 from PyQt5.QtGui import QPixmap
-import os                                                          
+import os
 import sys
 from stegano import lsb_1, extract_message_from_image
 
@@ -27,10 +27,12 @@ class MyWindow(QMainWindow):
 
 	def watermark_image(self):
 		message = self.message_text_edit.toPlainText()
-		lsb_1(self.image_path, message)
+		password = self.password_line_edit.text()
+		lsb_1(self.image_path, message, password)
 
 	def show_message(self):
-		message = extract_message_from_image(self.image_path)
+		password = self.password_line_edit.text()
+		message = extract_message_from_image(self.image_path, password)
 		self.message_text_edit.setText(message)
 
 

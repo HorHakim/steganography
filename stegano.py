@@ -1,17 +1,18 @@
 from PIL import Image
 import numpy
 import os
+from vigenere import vigenere_cipher
 
 
 image_path = "C:/Users/hakim/Documents/md5/aladin.jpg"
 watermarked_image_path = "C:/Users/hakim/Documents/md5/watermarked_image.png"
 
-def lsb_1(image_path, message):
+def lsb_1(image_path, message, password):
 	image_object = Image.open(image_path)
 	image_array = numpy.array(image_object)
 
 	image_array -= image_array % 2 # passage de tous les pixels en valeur pair
-
+	message = vigenere_cipher(message, password, reverse=False)
 	binary_message = [int(bin_number) for bin_number in ''.join(format(ord(i), '08b') for i in message)] # convert message to binary
 
 	number_rows, number_cols, number_color = image_array.shape
@@ -34,7 +35,7 @@ def lsb_1(image_path, message):
 
 
 
-def extract_message_from_image(watermarked_image_path):
+def extract_message_from_image(watermarked_image_path, password):
 	watermarker_image_object = Image.open(watermarked_image_path)
 	watermarker_image_array = numpy.array(watermarker_image_object)
 
@@ -48,5 +49,6 @@ def extract_message_from_image(watermarked_image_path):
 				if binary_message_list[-8:] == ["0"]*8:
 					binary_message = "".join(binary_message_list)
 					message = ''.join([chr(int(binary_message[i : i+8],2)) for i in range(0, len(binary_message), 8)])
+					message = vigenere_cipher(message, password, reverse=True)
 					return message
 

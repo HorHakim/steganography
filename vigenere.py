@@ -22,6 +22,8 @@ def caesar_cipher(message, key):
 	number_caracs_disc = len(string.printable)
 	for carac in message:
 		# on recherche la position du caractère à chiffrer dans notre disque (string.printable)
+		if carac not in string.printable:
+			break
 		position_carac_in_alphabet = string.printable.index(carac)
 		
 		# on calcul la position du caractère dans le disque une fois chiffré
