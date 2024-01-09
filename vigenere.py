@@ -1,6 +1,6 @@
 import string
 
-string.printable = string.printable.replace("\r", "é")
+string.printable = string.printable.replace("\r", "é") + "è"
 
 def caesar_cipher(message, key):
 	"""
